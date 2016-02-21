@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Nicholas Dry
+ * Copyright 2016
  */
 package htmlgenerator;
 
@@ -14,7 +13,7 @@ class HTMLElements {
 	private String header;
 	private String paragraph;
 	private String footer;
-        
+
 	public String getTitle() {
 		return title;
 	}
@@ -168,14 +167,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         html.setHeader(headerTextField.getText());
         html.setParagraph(paragraphTextField.getText());
         html.setFooter(footerTextField.getText());
-        
+
         try {
             PrintWriter output = new PrintWriter("index.html", "UTF-8");
             exportHTML(output);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        
+
     }//GEN-LAST:event_saveButtonActionPerformed
 
 
@@ -192,7 +191,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 new HTMLGeneratorGUI().setVisible(true);
             }
         });
-        
+
     }
 
     private static void exportHTML(PrintWriter output) {
