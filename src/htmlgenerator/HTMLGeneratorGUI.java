@@ -7,55 +7,6 @@ package htmlgenerator;
 import java.io.*;
 import java.util.*;
 
-class HTMLElements {
-
-	private String title;
-	private String header;
-	private String paragraph;
-	private String footer;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getHeader() {
-		return header;
-	}
-
-	public void setHeader(String header) {
-		this.header = header;
-	}
-
-	public String getParagraph() {
-		return paragraph;
-	}
-
-	public void setParagraph(String paragraph) {
-		this.paragraph = paragraph;
-	}
-
-	public String getFooter() {
-		return footer;
-	}
-
-	public void setFooter(String footer) {
-		this.footer = footer;
-	}
-
-	public HTMLElements() {
-		title = null;
-		header = null;
-		paragraph = null;
-		footer = null;
-	}
-
-}
-
-
 /**
  *
  * @author nicholasdry
@@ -84,6 +35,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
         helpWindow = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
+        addCSSWindow = new javax.swing.JFrame();
+        cssFileName = new javax.swing.JLabel();
+        cssFileField = new javax.swing.JTextField();
+        cssAddButton = new javax.swing.JButton();
+        addJSWindow = new javax.swing.JFrame();
+        jsFileName = new javax.swing.JLabel();
+        jsFileField = new javax.swing.JTextField();
+        jsAddButton = new javax.swing.JButton();
         paragraphScollPane = new javax.swing.JScrollPane();
         paragraphTextField = new javax.swing.JTextArea();
         titleText = new javax.swing.JLabel();
@@ -102,6 +61,8 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         fileNew = new javax.swing.JMenuItem();
         fileClose = new javax.swing.JMenuItem();
         edit = new javax.swing.JMenu();
+        addCSS = new javax.swing.JMenuItem();
+        addJS = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
         htmlTagGuide = new javax.swing.JMenuItem();
 
@@ -125,6 +86,84 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 .addContainerGap(157, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(127, 127, 127))
+        );
+
+        addCSSWindow.setMinimumSize(new java.awt.Dimension(400, 150));
+
+        cssFileName.setText("Enter Name of CSS File:");
+
+        cssAddButton.setText("Link");
+        cssAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cssAddButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addCSSWindowLayout = new javax.swing.GroupLayout(addCSSWindow.getContentPane());
+        addCSSWindow.getContentPane().setLayout(addCSSWindowLayout);
+        addCSSWindowLayout.setHorizontalGroup(
+            addCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addCSSWindowLayout.createSequentialGroup()
+                .addGroup(addCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addCSSWindowLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(cssFileName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cssFileField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addCSSWindowLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(cssAddButton)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        addCSSWindowLayout.setVerticalGroup(
+            addCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addCSSWindowLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(addCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cssFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cssFileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cssAddButton)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        addJSWindow.setMinimumSize(new java.awt.Dimension(400, 150));
+
+        jsFileName.setText("Enter Name of JS File:");
+
+        jsAddButton.setText("Link");
+        jsAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jsAddButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addJSWindowLayout = new javax.swing.GroupLayout(addJSWindow.getContentPane());
+        addJSWindow.getContentPane().setLayout(addJSWindowLayout);
+        addJSWindowLayout.setHorizontalGroup(
+            addJSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addJSWindowLayout.createSequentialGroup()
+                .addGroup(addJSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addJSWindowLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jsFileName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jsFileField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addJSWindowLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jsAddButton)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        addJSWindowLayout.setVerticalGroup(
+            addJSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addJSWindowLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(addJSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jsFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsFileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jsAddButton)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -178,6 +217,23 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         menuBar.add(file);
 
         edit.setText("Edit");
+
+        addCSS.setText("Add CSS..");
+        addCSS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCSSActionPerformed(evt);
+            }
+        });
+        edit.add(addCSS);
+
+        addJS.setText("Add JavaScript..");
+        addJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addJSActionPerformed(evt);
+            }
+        });
+        edit.add(addJS);
+
         menuBar.add(edit);
 
         help.setText("Help");
@@ -299,6 +355,33 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         helpWindow.setVisible(true);
     }//GEN-LAST:event_htmlTagGuideActionPerformed
 
+    private void addCSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCSSActionPerformed
+        
+        addCSSWindow.setVisible(true);
+        
+    }//GEN-LAST:event_addCSSActionPerformed
+
+    private void cssAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cssAddButtonActionPerformed
+        
+        
+        html.setCSS(cssFileName.getText());
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_cssAddButtonActionPerformed
+
+    private void jsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsAddButtonActionPerformed
+        
+        html.setJavaScript(jsFileName.getText());
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jsAddButtonActionPerformed
+
+    private void addJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJSActionPerformed
+        
+        addJSWindow.setVisible(true);
+        
+    }//GEN-LAST:event_addJSActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -323,6 +406,10 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
 		// adds the title of the webpage
 		output.printf("<title>%s</title>", html.getTitle());
+		output.println();
+                
+                // adds the css to the webpage
+                output.printf("<link rel='stylesheet/css' href='%s'>", html.getCSS(), html.getTitle());
 		output.println();
 
 		// adds the header of the page
@@ -355,6 +442,10 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 		// adds the title of the webpage
 		output.printf("<title>%s</title>", html.getTitle());
 		output.println();
+                
+                // adds the css to the webpage
+                output.printf("<link rel='stylesheet/css' href='%s'>%s</link>", html.getCSS(), html.getTitle());
+		output.println();
 
 		// adds the header of the page
 		output.printf("<h1>%s</h1>", html.getHeader());
@@ -376,6 +467,13 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem addCSS;
+    private javax.swing.JFrame addCSSWindow;
+    private javax.swing.JMenuItem addJS;
+    private javax.swing.JFrame addJSWindow;
+    private javax.swing.JButton cssAddButton;
+    private javax.swing.JTextField cssFileField;
+    private javax.swing.JLabel cssFileName;
     private javax.swing.JMenu edit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem fileClose;
@@ -391,6 +489,9 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox htmlFormatting;
     private javax.swing.JMenuItem htmlTagGuide;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jsAddButton;
+    private javax.swing.JTextField jsFileField;
+    private javax.swing.JLabel jsFileName;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JScrollPane paragraphScollPane;
     private javax.swing.JLabel paragraphText;
