@@ -34,7 +34,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         helpWindow = new javax.swing.JFrame();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         addCSSWindow = new javax.swing.JFrame();
         cssFileName = new javax.swing.JLabel();
         cssFileField = new javax.swing.JTextField();
@@ -43,6 +43,10 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         jsFileName = new javax.swing.JLabel();
         jsFileField = new javax.swing.JTextField();
         jsAddButton = new javax.swing.JButton();
+        aboutWindow = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         paragraphScollPane = new javax.swing.JScrollPane();
         paragraphTextField = new javax.swing.JTextArea();
         titleText = new javax.swing.JLabel();
@@ -65,27 +69,28 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         addJS = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
         htmlTagGuide = new javax.swing.JMenuItem();
+        aboutButton = new javax.swing.JMenuItem();
 
         helpWindow.setTitle("HTML Tags");
         helpWindow.setMinimumSize(new java.awt.Dimension(400, 400));
 
-        jLabel2.setText("Do I show now?");
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout helpWindowLayout = new javax.swing.GroupLayout(helpWindow.getContentPane());
         helpWindow.getContentPane().setLayout(helpWindowLayout);
         helpWindowLayout.setHorizontalGroup(
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpWindowLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel2)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         helpWindowLayout.setVerticalGroup(
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpWindowLayout.createSequentialGroup()
-                .addContainerGap(157, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(127, 127, 127))
+            .addGroup(helpWindowLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         addCSSWindow.setMinimumSize(new java.awt.Dimension(400, 150));
@@ -164,6 +169,39 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jsAddButton)
                 .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        aboutWindow.setMinimumSize(new java.awt.Dimension(500, 250));
+
+        jLabel2.setText("Copyright 2016 Nicholas Dry");
+
+        jLabel3.setText("HTML Generator");
+
+        jLabel4.setText("http://www.nicholasdry.com");
+
+        javax.swing.GroupLayout aboutWindowLayout = new javax.swing.GroupLayout(aboutWindow.getContentPane());
+        aboutWindow.getContentPane().setLayout(aboutWindowLayout);
+        aboutWindowLayout.setHorizontalGroup(
+            aboutWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutWindowLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(aboutWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addGroup(aboutWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)))
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
+        aboutWindowLayout.setVerticalGroup(
+            aboutWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutWindowLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -245,6 +283,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
             }
         });
         help.add(htmlTagGuide);
+
+        aboutButton.setText("About...");
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutButtonActionPerformed(evt);
+            }
+        });
+        help.add(aboutButton);
 
         menuBar.add(help);
 
@@ -365,14 +411,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         
         
         html.setCSS(cssFileName.getText());
-        this.setVisible(false);
+        addCSSWindow.setVisible(false);
         
     }//GEN-LAST:event_cssAddButtonActionPerformed
 
     private void jsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsAddButtonActionPerformed
         
         html.setJavaScript(jsFileName.getText());
-        this.setVisible(false);
+        addJSWindow.setVisible(false);
         
     }//GEN-LAST:event_jsAddButtonActionPerformed
 
@@ -381,6 +427,12 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         addJSWindow.setVisible(true);
         
     }//GEN-LAST:event_addJSActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        
+        aboutWindow.setVisible(true);
+        
+    }//GEN-LAST:event_aboutButtonActionPerformed
 
 
     /**
@@ -467,6 +519,8 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aboutButton;
+    private javax.swing.JFrame aboutWindow;
     private javax.swing.JMenuItem addCSS;
     private javax.swing.JFrame addCSSWindow;
     private javax.swing.JMenuItem addJS;
@@ -488,7 +542,10 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private javax.swing.JFrame helpWindow;
     private javax.swing.JCheckBox htmlFormatting;
     private javax.swing.JMenuItem htmlTagGuide;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jsAddButton;
     private javax.swing.JTextField jsFileField;
     private javax.swing.JLabel jsFileName;
