@@ -82,7 +82,9 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        helpWindow = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        paragraphScollPane = new javax.swing.JScrollPane();
         paragraphTextField = new javax.swing.JTextArea();
         titleText = new javax.swing.JLabel();
         titleTextField = new javax.swing.JTextField();
@@ -92,12 +94,44 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         footerText = new javax.swing.JLabel();
         footerTextField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
+        htmlFormatting = new javax.swing.JCheckBox();
+        fileName = new javax.swing.JTextField();
+        fileNameTag = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
+        file = new javax.swing.JMenu();
+        fileNew = new javax.swing.JMenuItem();
+        fileClose = new javax.swing.JMenuItem();
+        edit = new javax.swing.JMenu();
+        help = new javax.swing.JMenu();
+        htmlTagGuide = new javax.swing.JMenuItem();
+
+        helpWindow.setTitle("HTML Tags");
+        helpWindow.setMinimumSize(new java.awt.Dimension(400, 400));
+
+        jLabel2.setText("Do I show now?");
+
+        javax.swing.GroupLayout helpWindowLayout = new javax.swing.GroupLayout(helpWindow.getContentPane());
+        helpWindow.getContentPane().setLayout(helpWindowLayout);
+        helpWindowLayout.setHorizontalGroup(
+            helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(helpWindowLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel2)
+                .addContainerGap(172, Short.MAX_VALUE))
+        );
+        helpWindowLayout.setVerticalGroup(
+            helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, helpWindowLayout.createSequentialGroup()
+                .addContainerGap(157, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(127, 127, 127))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         paragraphTextField.setColumns(20);
         paragraphTextField.setRows(5);
-        jScrollPane1.setViewportView(paragraphTextField);
+        paragraphScollPane.setViewportView(paragraphTextField);
 
         titleText.setText("Website Title");
 
@@ -114,6 +148,52 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
             }
         });
 
+        htmlFormatting.setText("HTML Formatting");
+        htmlFormatting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                htmlFormattingActionPerformed(evt);
+            }
+        });
+
+        fileNameTag.setText("File Name");
+
+        file.setText("File");
+
+        fileNew.setText("New");
+        fileNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileNewActionPerformed(evt);
+            }
+        });
+        file.add(fileNew);
+
+        fileClose.setText("Close");
+        fileClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileCloseActionPerformed(evt);
+            }
+        });
+        file.add(fileClose);
+
+        menuBar.add(file);
+
+        edit.setText("Edit");
+        menuBar.add(edit);
+
+        help.setText("Help");
+
+        htmlTagGuide.setText("HTML Tag Guide");
+        htmlTagGuide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                htmlTagGuideActionPerformed(evt);
+            }
+        });
+        help.add(htmlTagGuide);
+
+        menuBar.add(help);
+
+        setJMenuBar(menuBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,10 +201,13 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fileNameTag)
+                    .addComponent(fileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(htmlFormatting)
                     .addComponent(saveButton)
                     .addComponent(footerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(footerText)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paragraphScollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(paragraphText)
                     .addComponent(titleText)
                     .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +216,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {footerTextField, headerTextField, titleTextField});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fileName, footerTextField, headerTextField, titleTextField});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,14 +232,20 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(paragraphText)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(paragraphScollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(htmlFormatting)
+                .addGap(18, 18, 18)
+                .addComponent(fileNameTag)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(fileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(footerText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(footerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveButton)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -168,24 +257,53 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         html.setParagraph(paragraphTextField.getText());
         html.setFooter(footerTextField.getText());
 
-        try {
-            PrintWriter output = new PrintWriter("index.html", "UTF-8");
-            exportHTML(output);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        // Grabs the file name for the output
+        String file = fileName.getText();
+       
+        // 
+        if (htmlFormatting.isSelected()) {
+            try {
+                PrintWriter output = new PrintWriter(file, "UTF-8");
+                exportHTMLFormatted(output);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            try {
+                PrintWriter output = new PrintWriter(file, "UTF-8");
+                exportHTML(output);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
-
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void htmlFormattingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_htmlFormattingActionPerformed
+        
+    }//GEN-LAST:event_htmlFormattingActionPerformed
+
+    private void fileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileNewActionPerformed
+        
+        titleTextField.setText("");
+        headerTextField.setText("");
+        paragraphTextField.setText("");
+        fileName.setText("");
+        footerTextField.setText("");
+    }//GEN-LAST:event_fileNewActionPerformed
+
+    private void fileCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileCloseActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_fileCloseActionPerformed
+
+    private void htmlTagGuideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_htmlTagGuideActionPerformed
+        helpWindow.setVisible(true);
+    }//GEN-LAST:event_htmlTagGuideActionPerformed
 
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) throws IOException {
-        /* Set the Nimbus look and feel */
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HTMLGeneratorGUI().setVisible(true);
@@ -225,14 +343,56 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 output.close();
 
 	}
+    
+    private static void exportHTMLFormatted(PrintWriter output) {
+                output.println("<html>");
+		output.println();
+
+		// adds in copyright info
+		output.println("<!-- Created with HTMLGenerator https://github.com/nicholasdry/HTMLGenerator -->");
+		output.println();
+
+		// adds the title of the webpage
+		output.printf("<title>%s</title>", html.getTitle());
+		output.println();
+
+		// adds the header of the page
+		output.printf("<h1>%s</h1>", html.getHeader());
+		output.println();
+
+		// add the paragraph text of the webpage
+		output.printf("%s", html.getParagraph());
+		output.println();
+
+		// add the footer of the webpage
+		output.printf("<footer>%s</footer>", html.getFooter());
+		output.println();
+		output.println();
+
+		output.write("</html>");
+
+                output.close();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu edit;
+    private javax.swing.JMenu file;
+    private javax.swing.JMenuItem fileClose;
+    private javax.swing.JTextField fileName;
+    private javax.swing.JLabel fileNameTag;
+    private javax.swing.JMenuItem fileNew;
     private javax.swing.JLabel footerText;
     private javax.swing.JTextField footerTextField;
     private javax.swing.JLabel headerText;
     private javax.swing.JTextField headerTextField;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu help;
+    private javax.swing.JFrame helpWindow;
+    private javax.swing.JCheckBox htmlFormatting;
+    private javax.swing.JMenuItem htmlTagGuide;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JScrollPane paragraphScollPane;
     private javax.swing.JLabel paragraphText;
     private javax.swing.JTextArea paragraphTextField;
     private javax.swing.JButton saveButton;
