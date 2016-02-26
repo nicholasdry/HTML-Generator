@@ -1,5 +1,5 @@
 # HTML-Generator
-A GUI application which creates static HTML files for the users without them having to write any code.
+A GUI application which creates HTML files for the users without them having to write any code.
 
 Version 1.0.0
 
