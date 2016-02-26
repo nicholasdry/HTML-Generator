@@ -74,7 +74,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         helpWindow.setTitle("HTML Tags");
         helpWindow.setMinimumSize(new java.awt.Dimension(400, 400));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Useful HTML Tags:");
 
         javax.swing.GroupLayout helpWindowLayout = new javax.swing.GroupLayout(helpWindow.getContentPane());
         helpWindow.getContentPane().setLayout(helpWindowLayout);
@@ -83,7 +83,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
             .addGroup(helpWindowLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         helpWindowLayout.setVerticalGroup(
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,14 +410,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private void cssAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cssAddButtonActionPerformed
         
         
-        html.setCSS(cssFileName.getText());
+        html.setCSS(cssFileField.getText());
         addCSSWindow.setVisible(false);
         
     }//GEN-LAST:event_cssAddButtonActionPerformed
 
     private void jsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsAddButtonActionPerformed
         
-        html.setJavaScript(jsFileName.getText());
+        html.setJavaScript(jsFileField.getText());
         addJSWindow.setVisible(false);
         
     }//GEN-LAST:event_jsAddButtonActionPerformed
@@ -461,9 +461,16 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 		output.println();
                 
                 // adds the css to the webpage
-                output.printf("<link rel='stylesheet/css' href='%s'>", html.getCSS(), html.getTitle());
+                output.printf("<link rel='stylesheet/css' href='%s'>", html.getCSS());
+		output.println();
+                
+                // adds the JS to the webpage
+                output.printf("<script src='%s'></script>", html.getJavaScript());
 		output.println();
 
+                output.println("<body>");
+                output.println();
+                
 		// adds the header of the page
 		output.printf("<h1>%s</h1>", html.getHeader());
 		output.println();
@@ -477,6 +484,9 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 		output.println();
 		output.println();
 
+                output.println("</body>");
+                output.println();
+                
 		output.write("</html>");
 
                 output.close();
@@ -496,7 +506,11 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 		output.println();
                 
                 // adds the css to the webpage
-                output.printf("<link rel='stylesheet/css' href='%s'>%s</link>", html.getCSS(), html.getTitle());
+                output.printf("<link rel='stylesheet/css' href='%s'>%s</link>", html.getCSS());
+		output.println();
+                
+                // adds the JS to the webpage
+                output.printf("<script src='%s'></script>", html.getJavaScript());
 		output.println();
 
 		// adds the header of the page
