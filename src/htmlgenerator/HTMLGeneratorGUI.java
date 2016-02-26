@@ -34,7 +34,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         helpWindow = new javax.swing.JFrame();
-        jLabel1 = new javax.swing.JLabel();
+        htmlTagLabel = new javax.swing.JLabel();
         addCSSWindow = new javax.swing.JFrame();
         cssFileName = new javax.swing.JLabel();
         cssFileField = new javax.swing.JTextField();
@@ -63,6 +63,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         fileNew = new javax.swing.JMenuItem();
+        fileSave = new javax.swing.JMenuItem();
         fileClose = new javax.swing.JMenuItem();
         edit = new javax.swing.JMenu();
         addCSS = new javax.swing.JMenuItem();
@@ -74,7 +75,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         helpWindow.setTitle("HTML Tags");
         helpWindow.setMinimumSize(new java.awt.Dimension(400, 400));
 
-        jLabel1.setText("Useful HTML Tags:");
+        htmlTagLabel.setText("Useful HTML Tags:");
 
         javax.swing.GroupLayout helpWindowLayout = new javax.swing.GroupLayout(helpWindow.getContentPane());
         helpWindow.getContentPane().setLayout(helpWindowLayout);
@@ -82,14 +83,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpWindowLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1)
+                .addComponent(htmlTagLabel)
                 .addContainerGap(249, Short.MAX_VALUE))
         );
         helpWindowLayout.setVerticalGroup(
             helpWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpWindowLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addComponent(htmlTagLabel)
                 .addContainerGap(259, Short.MAX_VALUE))
         );
 
@@ -236,6 +237,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
         file.setText("File");
 
+        fileNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.META_MASK));
         fileNew.setText("New");
         fileNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +246,16 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         });
         file.add(fileNew);
 
+        fileSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.META_MASK));
+        fileSave.setText("Save");
+        fileSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileSaveActionPerformed(evt);
+            }
+        });
+        file.add(fileSave);
+
+        fileClose.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.META_MASK));
         fileClose.setText("Close");
         fileClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +268,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
         edit.setText("Edit");
 
+        addCSS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.META_MASK));
         addCSS.setText("Add CSS..");
         addCSS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +277,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         });
         edit.add(addCSS);
 
+        addJS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.META_MASK));
         addJS.setText("Add JavaScript..");
         addJS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,6 +448,33 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_aboutButtonActionPerformed
 
+    private void fileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileSaveActionPerformed
+        html.setTitle(titleTextField.getText());
+        html.setHeader(headerTextField.getText());
+        html.setParagraph(paragraphTextField.getText());
+        html.setFooter(footerTextField.getText());
+
+        // Grabs the file name for the output
+        String file = fileName.getText();
+       
+        // 
+        if (htmlFormatting.isSelected()) {
+            try {
+                PrintWriter output = new PrintWriter(file, "UTF-8");
+                exportHTMLFormatted(output);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            try {
+                PrintWriter output = new PrintWriter(file, "UTF-8");
+                exportHTML(output);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_fileSaveActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -548,6 +589,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private javax.swing.JTextField fileName;
     private javax.swing.JLabel fileNameTag;
     private javax.swing.JMenuItem fileNew;
+    private javax.swing.JMenuItem fileSave;
     private javax.swing.JLabel footerText;
     private javax.swing.JTextField footerTextField;
     private javax.swing.JLabel headerText;
@@ -556,7 +598,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private javax.swing.JFrame helpWindow;
     private javax.swing.JCheckBox htmlFormatting;
     private javax.swing.JMenuItem htmlTagGuide;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel htmlTagLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
