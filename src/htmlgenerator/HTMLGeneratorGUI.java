@@ -18,6 +18,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
      */
 
     public static HTMLElements html = new HTMLElements();
+    public static CSSElements css = new CSSElements();
 
 
     public HTMLGeneratorGUI() {
@@ -47,6 +48,12 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        createCSSWindow = new javax.swing.JFrame();
+        bgHexColor = new javax.swing.JLabel();
+        hexColor = new javax.swing.JTextField();
+        fileNameLabel = new javax.swing.JLabel();
+        createCSSFileName = new javax.swing.JTextField();
+        cssSaveButton = new javax.swing.JButton();
         paragraphScollPane = new javax.swing.JScrollPane();
         paragraphTextField = new javax.swing.JTextArea();
         titleText = new javax.swing.JLabel();
@@ -68,6 +75,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         edit = new javax.swing.JMenu();
         addCSS = new javax.swing.JMenuItem();
         addJS = new javax.swing.JMenuItem();
+        createCSS = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
         htmlTagGuide = new javax.swing.JMenuItem();
         aboutButton = new javax.swing.JMenuItem();
@@ -205,6 +213,57 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
+        bgHexColor.setText("Background Hex Color:");
+
+        fileNameLabel.setText("File Name:");
+
+        createCSSFileName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCSSFileNameActionPerformed(evt);
+            }
+        });
+
+        cssSaveButton.setText("Save");
+        cssSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cssSaveButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout createCSSWindowLayout = new javax.swing.GroupLayout(createCSSWindow.getContentPane());
+        createCSSWindow.getContentPane().setLayout(createCSSWindowLayout);
+        createCSSWindowLayout.setHorizontalGroup(
+            createCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createCSSWindowLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(createCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createCSSWindowLayout.createSequentialGroup()
+                        .addComponent(fileNameLabel)
+                        .addGap(29, 29, 29)
+                        .addComponent(createCSSFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cssSaveButton))
+                    .addGroup(createCSSWindowLayout.createSequentialGroup()
+                        .addComponent(bgHexColor)
+                        .addGap(18, 18, 18)
+                        .addComponent(hexColor, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(197, Short.MAX_VALUE))
+        );
+        createCSSWindowLayout.setVerticalGroup(
+            createCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createCSSWindowLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(createCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bgHexColor)
+                    .addComponent(hexColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
+                .addGroup(createCSSWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fileNameLabel)
+                    .addComponent(createCSSFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cssSaveButton))
+                .addGap(25, 25, 25))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         paragraphTextField.setColumns(20);
@@ -285,6 +344,14 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
             }
         });
         edit.add(addJS);
+
+        createCSS.setText("Create CSS File");
+        createCSS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCSSActionPerformed(evt);
+            }
+        });
+        edit.add(createCSS);
 
         menuBar.add(edit);
 
@@ -475,6 +542,31 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fileSaveActionPerformed
 
+    private void createCSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCSSActionPerformed
+        
+        createCSSWindow.setVisible(true);
+        
+    }//GEN-LAST:event_createCSSActionPerformed
+
+    private void createCSSFileNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCSSFileNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createCSSFileNameActionPerformed
+
+    private void cssSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cssSaveButtonActionPerformed
+        
+        css.setBackgroundColor(Integer.parseInt(hexColor.getText()));
+        
+        String file = createCSSFileName.getText();
+       
+        // 
+        try {
+            PrintWriter output = new PrintWriter(file, "UTF-8");
+            exportCSS(output);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }        
+    }//GEN-LAST:event_cssSaveButtonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -488,6 +580,21 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
     }
 
+    private static void exportCSS(PrintWriter output) {
+
+		// adds in copyright info
+		output.println("<!-- Created with HTMLGenerator https://github.com/nicholasdry/HTMLGenerator -->");
+		output.println();
+
+		output.printf("body { background-color: 0x%d }", css.getBackgroundColor());
+                output.println();
+		
+                System.out.println(css.getBackgroundColor());
+
+                output.close();
+        
+    }
+    
     private static void exportHTML(PrintWriter output) {
 
 		output.println("<html>");
@@ -580,13 +687,19 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private javax.swing.JFrame addCSSWindow;
     private javax.swing.JMenuItem addJS;
     private javax.swing.JFrame addJSWindow;
+    private javax.swing.JLabel bgHexColor;
+    private javax.swing.JMenuItem createCSS;
+    private javax.swing.JTextField createCSSFileName;
+    private javax.swing.JFrame createCSSWindow;
     private javax.swing.JButton cssAddButton;
     private javax.swing.JTextField cssFileField;
     private javax.swing.JLabel cssFileName;
+    private javax.swing.JButton cssSaveButton;
     private javax.swing.JMenu edit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem fileClose;
     private javax.swing.JTextField fileName;
+    private javax.swing.JLabel fileNameLabel;
     private javax.swing.JLabel fileNameTag;
     private javax.swing.JMenuItem fileNew;
     private javax.swing.JMenuItem fileSave;
@@ -596,6 +709,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private javax.swing.JTextField headerTextField;
     private javax.swing.JMenu help;
     private javax.swing.JFrame helpWindow;
+    private javax.swing.JTextField hexColor;
     private javax.swing.JCheckBox htmlFormatting;
     private javax.swing.JMenuItem htmlTagGuide;
     private javax.swing.JLabel htmlTagLabel;
