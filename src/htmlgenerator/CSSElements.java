@@ -12,8 +12,17 @@ package htmlgenerator;
 public class CSSElements {
     
     private int backgroundHex;
+    private String fileName;
     
     public CSSElements() {}
+    
+    public String getFileName() {
+        return fileName;
+    }
+    
+    public void setFileName(String file) {
+        fileName = file;
+    }
     
     public int getBackgroundColor() {
         return backgroundHex;

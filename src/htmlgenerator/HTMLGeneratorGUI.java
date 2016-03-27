@@ -213,6 +213,9 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
+        createCSSWindow.setMinimumSize(new java.awt.Dimension(200, 500));
+        createCSSWindow.setSize(new java.awt.Dimension(500, 500));
+
         bgHexColor.setText("Background Hex Color:");
 
         fileNameLabel.setText("File Name:");
@@ -490,8 +493,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
     private void cssAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cssAddButtonActionPerformed
         
-        
-        html.setCSS(cssFileField.getText());
+        css.setFileName(cssFileField.getText());
         addCSSWindow.setVisible(false);
         
     }//GEN-LAST:event_cssAddButtonActionPerformed
@@ -554,9 +556,15 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 
     private void cssSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cssSaveButtonActionPerformed
         
-        css.setBackgroundColor(Integer.parseInt(hexColor.getText()));
-        
-        String file = createCSSFileName.getText();
+       css.setBackgroundColor(Integer.parseInt(hexColor.getText()));
+       
+       System.out.println(createCSSFileName.getText());
+       
+       String file = createCSSFileName.getText();
+       
+       css.setFileName(file);
+       
+       System.out.println(css.getFileName());
        
         // 
         try {
@@ -583,10 +591,10 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
     private static void exportCSS(PrintWriter output) {
 
 		// adds in copyright info
-		output.println("<!-- Created with HTMLGenerator https://github.com/nicholasdry/HTMLGenerator -->");
+		output.println("/* Created with HTMLGenerator https://github.com/nicholasdry/HTMLGenerator */");
 		output.println();
 
-		output.printf("body { background-color: 0x%d }", css.getBackgroundColor());
+		output.printf("body { background-color: #%d }", css.getBackgroundColor());
                 output.println();
 		
                 System.out.println(css.getBackgroundColor());
@@ -609,7 +617,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 		output.println();
                 
                 // adds the css to the webpage
-                output.printf("<link rel='stylesheet/css' href='%s'>", html.getCSS());
+                output.printf("<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\">", css.getFileName());
 		output.println();
                 
                 // adds the JS to the webpage
@@ -654,7 +662,7 @@ public class HTMLGeneratorGUI extends javax.swing.JFrame {
 		output.println();
                 
                 // adds the css to the webpage
-                output.printf("<link rel='stylesheet/css' href='%s'>%s</link>", html.getCSS());
+                output.printf("<link rel='stylesheet/css' href='%s'>%s</link>", css.getFileName());
 		output.println();
                 
                 // adds the JS to the webpage

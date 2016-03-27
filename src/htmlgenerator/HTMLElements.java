@@ -6,17 +6,8 @@ class HTMLElements {
 	private String header;
 	private String paragraph;
 	private String footer;
-        private String css;
         private String javascript;
 
-        public String getCSS() {
-		return css;
-	}
-        
-        public void setCSS(String css) {
-		this.css = css;
-	}
-        
         public String getJavaScript() {
 		return javascript;
 	}
