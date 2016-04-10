@@ -27,4 +27,6 @@ The code is created linearly as you would create in an actual HTML file. With no
 Currently the things I would like to add into this project is:
 - Tabbing of the code.
 - Ability to add more elements and move them around as opposed to the linear output like I have implemented so far.
+- Ability to create CSS stylesheets.
+- Ability to create simple javascript.
 
