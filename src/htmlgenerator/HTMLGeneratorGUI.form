@@ -230,6 +230,13 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <Component id="alignCenter" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="alignLeft" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="alignRight" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Component id="fileNameLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="createCSSFileName" min="-2" pref="112" max="-2" attributes="0"/>
@@ -242,7 +249,7 @@
                           <Component id="hexColor" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="197" max="32767" attributes="0"/>
+                  <EmptySpace pref="180" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -254,7 +261,13 @@
                       <Component id="bgHexColor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="hexColor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="359" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="alignCenter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alignLeft" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alignRight" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="318" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="fileNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="createCSSFileName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -290,6 +303,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cssSaveButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="alignCenter">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Align Center"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alignCenterActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="alignLeft">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Align Left"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="alignRight">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Align Right"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

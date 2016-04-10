@@ -1,0 +1,2 @@
+all:
+	rm -rf *.css *.html *.js

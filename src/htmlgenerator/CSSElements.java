@@ -12,9 +12,20 @@ package htmlgenerator;
 public class CSSElements {
     
     private int backgroundHex;
+    private String align;
     private String fileName;
     
-    public CSSElements() {}
+    public CSSElements() {
+        align = null;
+    }
+    
+    public void setAlign(String place) {
+        align = place;
+    }
+    
+    public String getAlign() {
+        return align;
+    }
     
     public String getFileName() {
         return fileName;
